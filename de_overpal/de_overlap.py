@@ -12,8 +12,8 @@ import shutil
 去重后的图片存储在 new_data_path 中
 '''
 
-ori_data_path = r'./data'
-new_data_path = r'./newdata'
+# ori_data_path = r'./data'
+# new_data_path = r'./newdata'
 
 # data0 =mpimg.imread('data/0.jpg')
 # data0d = mpimg.imread('data/0.jpg')
@@ -41,17 +41,19 @@ new_data_path = r'./newdata'
 
 # pichash = np.array(np.zeros([len(os.listdir('./')),2]))
 
-pichash = {}
-for filename in os.listdir(ori_data_path):
-    # data0 = mpimg.imread(ori_data_path+'/'+filename)
-    with open(ori_data_path+'/'+filename,'rb') as f:
-        pichash[hashlib.md5(f.read()).hexdigest()] = filename
-print(pichash)
+def de_overlap(ori_data_path,new_data_path):
 
-if not os.path.exists(new_data_path):
-    os.mkdir(new_data_path)
-for pic in pichash.values():
-    shutil.copy(ori_data_path+'/'+pic,new_data_path+'/'+pic)
+    pichash = {}
+    for filename in os.listdir(ori_data_path):
+        # data0 = mpimg.imread(ori_data_path+'/'+filename)
+        with open(ori_data_path+'/'+filename,'rb') as f:
+            pichash[hashlib.md5(f.read()).hexdigest()] = filename
+    print(pichash)
 
-print('end')
-# picname = os.listdir(r'./')
+    if not os.path.exists(new_data_path):
+        os.mkdir(new_data_path)
+    for pic in pichash.values():
+        shutil.copy(ori_data_path+'/'+pic,new_data_path+'/'+pic)
+
+    print('end')
+    # picname = os.listdir(r'./')
