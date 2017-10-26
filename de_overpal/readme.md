@@ -12,6 +12,11 @@ de_overlap.py:
 去重后的图片存储在 new_data_path 中
 '''
 
+rename.py:
+'''
+把 dir 目录下的所有.jpg文件按照 0.jpg, 1.jpg, ..., n.jpg 重命名， 并删除所有非 .jpg 格式的文件 
+'''
 
+you can just run preprocessing.py or it's .pyc
 
 Thank you
